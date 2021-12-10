@@ -5,6 +5,14 @@ https://github.com/bmuschko/ckad-study-guide
 Distroless
 https://github.com/GoogleContainerTools/distroless
 
+https://github.com/netlify/gotrue
+
+https://github.com/bradtraversy/vanillawebprojects
+
+https://github.com/bradtraversy/50projects50days
+
+https://github.com/google/zx
+
 Folders
 
 ```
