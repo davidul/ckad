@@ -1,4 +1,5 @@
 #CKAD
+
 https://github.com/dgkanatsios/CKAD-exercises/blob/master/a.core_concepts.md
 https://github.com/bmuschko/ckad-study-guide
 
