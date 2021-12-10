@@ -1,4 +1,6 @@
-#CKAD
+# CKAD
+
+[Pods](pods.md)
 
 https://github.com/dgkanatsios/CKAD-exercises/blob/master/a.core_concepts.md
 https://github.com/bmuschko/ckad-study-guide
@@ -30,7 +32,7 @@ k8s
 spring-boot-demo - spring boot demo app, java project
 ```
 
-##Curriculum
+## Curriculum
 
 * Application Design and Build  20%
 * Application Deployment 20%
@@ -38,25 +40,25 @@ spring-boot-demo - spring boot demo app, java project
 * Application Environment, Configuration and Security 25%
 * Services and Networking 20%
 
-###Application Design and Build
+### Application Design and Build
 * Define, build and modify container images
 * Understand Jobs and CronJobs
 * Understand multi-container Pod design patterns (sidecar, init, etc.)
 * Utilize persistent and ephemeral volumes
 
-###Application Deployment
+### Application Deployment
 * Use Kubernetes primitives to implement common deployment strategies (blue/green, canary etc.)
 * Understand deployments and how to perform rolling updates
 * Use Helm package manager to deploy existing packages
 
-###Application observability and maintenance
+### Application observability and maintenance
 * Understand API deprecations
 * Implement probes and health checks
 * Use provided tools to monitor Kubernetes applications
 * Utilize container logs
 * Debugging in Kubernetes
 
-###Application Environment, Configuration and Security
+### Application Environment, Configuration and Security
 * Discover and use resources that extend Kubernetes (CRD)
 * Understand authentication, authorization and admission control
 * Understanding and defining resource requirements, limits and quotas
@@ -65,9 +67,9 @@ spring-boot-demo - spring boot demo app, java project
 * Understand ServiceAccounts
 * Understand SecurityContext
 
-###Services and Networking
+###S ervices and Networking
 * Demonstrate basic understanding of NetworkPolicies
 * Provide and troubleshoot access to application via services
 * Use Ingress rules to expose applications
 
-[Pods](pods.md)
+
