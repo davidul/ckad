@@ -1,5 +1,9 @@
 # PODS
 
+In Kubernetes Pod is the smallest deployable unit.
+Pod is one or more containers, sharing network 
+and storage resources. 
+
 List pods in default namespace
 ```
 kubectl get pods
@@ -16,7 +20,7 @@ Delete pod name curl-david
 kubectl delete pod curl-david
 ```
 
-Run pod
+Run pod, named "nginx"
 ```
 kubectl run nginx --image=nginx
 ```
@@ -34,4 +38,16 @@ kubectl exec nginx -- ls -ltr
 Attach to a container
 ```
 kubectl attach nginx
+```
+
+## Run Pod
+Pod can be created and schedules by either declarative or imperative
+way.
+Imperative way is in form of executing a command. Declarative way 
+is to write the declaration in form of YAML file and then let the 
+K8s cluster to determine the best way to fulfill it.
+
+Imperative way of creating POD
+```
+kubectl run nginx --image=nginx
 ```

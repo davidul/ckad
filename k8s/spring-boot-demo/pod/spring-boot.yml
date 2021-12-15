@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring-boot-pod
+spec:
+  containers:
+    - name: spring-boot-demo
+      image: spring-boot-demo
