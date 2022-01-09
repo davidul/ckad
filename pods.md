@@ -102,3 +102,17 @@ Exec a bash inside the container (if there is any)
 crictl -r /var/snap/microk8s/common/run/containerd.sock exec -t -i 389a12535bdad /bin/bash
 ```
 
+# Declarative pod
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+```
