@@ -24,6 +24,11 @@ public class ToDoController {
         return byId.map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/hello")
+    public String sample(){
+        return "Hello";
+    }
+
     @PostMapping
     public void addTodo(@RequestBody Todo todo){
         this.todoRepository.save(todo);
