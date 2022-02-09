@@ -23,12 +23,22 @@ k8s
 spring-boot-demo - spring boot demo app, java project
 ```
 
+## Build demo app
+
+```shell
+cd spring-boot-demo
+./mvnw package
+```
+
+JAR file is in `target` folder.
+
+
 ## Create K8s Cluster   
 Create the cluster with [multipass](https://multipass.run/) 
 
 Default settings are 1G of memory and 1 CPU. CPU is enough,
 but feels faster if the memory is slightly increased.
-Creating three machines, one controll plane and two worker nodes.
+Creating three machines, one control plane and two worker nodes.
 ```shell
 multipass launch --mem 3G -n control-node
 multipass launch --mem 3G -n worker-1
@@ -36,15 +46,15 @@ multipass launch --mem 3G -n worker-2
 ```
 
 Once they are up and running you can connect to the shell
-and install [microk8s](https://microk8s.io/)s
+and install [microk8s](https://microk8s.io/)
 
 ```shell
-multipass shell controll-node
+multipass shell control-node
 sudo snap install microk8s --classic
 sudo microk8s enable dns dashboard storage
 ```
 
-When microk8s is up and running worker nodes can join the
+When `microk8s` is up and running worker nodes can join the
 cluster. On the control node issue command
 ```shell
 sudo microk8s add-node
