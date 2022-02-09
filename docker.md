@@ -1,8 +1,19 @@
 # Docker
 
+- [Docker](#docker)
+    * [Docker image](#docker-image)
+    * [Docker socket](#docker-socket)
+    * [Volumes](#volumes)
+        + [Listing volumes](#listing-volumes)
+    * [Mount docker socket](#mount-docker-socket)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## Docker image
 Docker image is created using `Dockerfile`. There you put the instructions how to assemble
 the image. There is usually a `parent` image which you specify with `FROM` keyword.
+You can also build the image from `scratch` and there is no parent 
+in that case.
 Example:
 
 ```dockerfile
@@ -10,7 +21,8 @@ FROM alpine:3.15.0
 ```
 
 This means that `alpine` linux will be used as the base image. To build the actual 
-image use
+image use command, where -t is tag and `.` is context where to build the
+image
 ```shell
 docker build -t david .
 ```
@@ -141,4 +153,81 @@ This will show the port the container is listening
 
 ```shell
 docker port $HOSTNAME
+```
+## Docker Execute
+There are few options how to execute the docker container. Docker `run` command has basic
+syntax 
+```shell
+docker run IMAGE COMMAND
+```
+You can pass the command from the shell, for example with empty command
+
+```shell
+docker run alpine
+```
+It will create the container and exit immediately.
+It executed `/bin/sh` and exit
+```shell
+61b134d5fd93   alpine                      "/bin/sh"                7 seconds ago   Exited (0) 6 seconds ago             tender_khayyam
+```
+If we allocate the interactive tty with `-it` param, we will jump into the shell
+
+```shell
+docker run -it alpine
+/ # 
+```
+
+Let's pass the command now
+
+```shell
+docker run alpine ls
+bin
+dev
+etc
+home
+...
+```
+
+Alpine 3.15 Dockerfile is here [https://github.com/alpinelinux/docker-alpine/blob/v3.15/armv7/Dockerfile](https://github.com/alpinelinux/docker-alpine/blob/v3.15/armv7/Dockerfile)
+
+```dockerfile
+FROM scratch
+ADD alpine-minirootfs-3.15.0-armv7.tar.gz /
+CMD ["/bin/sh"]
+```
+`CMD` directive instructs docker to run this command when no other command is passed from
+command line.
+We can demonstrate this with our own command
+
+```dockerfile
+FROM alpine:3.15
+CMD ["ls"]
+```
+
+```shell
+docker build . -t davidul-ls
+docker run davidul-ls
+bin
+dev
+etc
+home
+...
+```
+`ls` command is executed by default.
+
+You can add `ENTRYPOINT` instruction and use `CMD` as 
+parameters to it. For example
+```dockerfile
+FROM alpine:3.15
+ENTRYPOINT ["ls"]
+CMD ["-l"]
+```
+Output of execution
+
+```shell
+docker run davidul-ls
+total 56
+drwxr-xr-x    2 root     root          4096 Nov 24 09:23 bin
+drwxr-xr-x    5 root     root           340 Feb  9 10:43 dev
+...
 ```
