@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  todo-app:
+    image: ${SPRING_BOOT_IMAGE_NAME}
+    env_file:
+      - todo-app.env
+    ports:
+      - "${TODO_APP_PORT}:${TODO_APP_PORT}"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: "mongo"
+    container_name: "mongo"
+    hostname: "mongo"
