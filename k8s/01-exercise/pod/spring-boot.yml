@@ -5,4 +5,7 @@ metadata:
 spec:
   containers:
     - name: spring-boot-demo
-      image: spring-boot-demo
+      image: todo-app:latest
+      imagePullPolicy: Never
+    - name: mongo
+      image: mongo
